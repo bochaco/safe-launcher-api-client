@@ -21,7 +21,8 @@
 			"description": "",
 			"order": [
 				"1d208255-4689-e8b9-a8e5-706c04df30c0",
-				"b93d5137-2298-83a8-8bb4-63904e4f5b56"
+				"b93d5137-2298-83a8-8bb4-63904e4f5b56",
+				"de9bec2d-60b0-2b88-fca1-e110e47bceb4"
 			],
 			"owner": ""
 		},
@@ -37,7 +38,7 @@
 		}
 	],
 	"timestamp": 1475447427767,
-	"owner": "",
+	"owner": 0,
 	"public": false,
 	"published": false,
 	"requests": [
@@ -55,7 +56,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1475533329132,
-			"name": "GET /immutableData",
+			"name": "GET /immutableData/:dataMapId",
 			"description": "Read a datamap",
 			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
 			"responses": [],
@@ -94,7 +95,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1475533852237,
-			"name": "PUT /appendableData/handle",
+			"name": "PUT /appendableData/:handleId/:dataMapId",
 			"description": "Append the email (Data Map handle) to the appendable data",
 			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
 			"responses": [],
@@ -114,7 +115,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1475532730589,
-			"name": "GET /appendableData/encryptKey",
+			"name": "GET /appendableData/encryptKey/:handleId",
 			"description": "Get encryption key from the appendable data handle",
 			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
 			"responses": [],
@@ -134,7 +135,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1475532464446,
-			"name": "GET /appendableData/handle",
+			"name": "GET /appendableData/handle/:id",
 			"description": "Fetch the appendable data handle",
 			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
 			"responses": [],
@@ -162,7 +163,7 @@
 		},
 		{
 			"id": "c37a68a3-bdd1-d297-fb1a-3b1b0caf5d75",
-			"headers": "Authorization: Bearer {{token}}\nContent-Type: text/plain\nencrypt-key-handle: {{appendable-encryption-key}}\n",
+			"headers": "Authorization: Bearer {{token}}\nContent-Type: text/plain\nencrypt-key-handle: {{appendable-encryption-key}}\nencryption: SYMMETRIC\n",
 			"url": "http://{{safe-launcher}}/immutableData",
 			"preRequestScript": "postman.setEnvironmentVariable('iso-time',(new Date()).toISOString());",
 			"pathVariables": {},
@@ -173,12 +174,32 @@
 			"tests": "postman.setEnvironmentVariable(\"datamap-handle\", postman.getResponseHeader(\"Handle-Id\"));",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1475534367269,
+			"time": 1475598063417,
 			"name": "POST /immutableData",
 			"description": "Save the email as immutable data",
 			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
 			"responses": [],
 			"rawModeData": "{\n  \"subject\": \"Test\",\n  \"from\": \"example\",\n  \"time\": \"{{iso-time}}\",\n  \"body\": \"123\"\n}"
+		},
+		{
+			"id": "de9bec2d-60b0-2b88-fca1-e110e47bceb4",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"url": "http://{{safe-launcher}}/auth",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1475612193078,
+			"name": "DELETE /auth",
+			"description": "Revoke app",
+			"collectionId": "b0264d51-8f44-3c7d-5320-886409d6e37a",
+			"responses": [],
+			"rawModeData": ""
 		}
 	]
 }
