@@ -56,7 +56,7 @@ The following is the list of the available requests in the Postman collection, w
 
 ## Sending an email
 
-You can send an email in the SAFE network compatible with the SAFE Mail app provided in SAFE Network Test 9. This can be achieved by using the quests provided out of the box:
+You can send an email in the SAFE network compatible with the SAFE Mail app provided in SAFE Network Test 9. This can be achieved by using the requests provided out of the box:
 
 1. Import the collection and the environment variables into Postman
 
